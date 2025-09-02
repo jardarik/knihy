@@ -32,6 +32,7 @@
 		<?php
         $page = isset($_GET['page']) ? $_GET['page'] : 'add';
 		switch ($page) {
+		    // přidání knihy
 		    case 'add':
 		        echo '<h1 class="mb-4">Vkládání nové knihy</h1>';
 		        echo '
@@ -60,10 +61,12 @@
                 </form>
                 ';
 		        break;
+		        // Přehled knih
 		    case 'list':
 		        echo '<h1 class="mb-4">Přehled knih</h1>';
-		        echo '<!-- Zde bude seznam knih -->';
+		        include 'prehled.php';
 		        break;
+		        //vyhledávání
 		    case 'search':
 		        echo '<h1 class="mb-4">Vyhledávání knih</h1>';
 		        echo '
