@@ -24,7 +24,7 @@ $result = $conn->query($sql);
 // Výpis tabulky s knihami
 if ($result && $result->num_rows > 0) { ?>
             <table class='table table-striped table-bordered'>
-            <thead class='table-dark'><tr><th>ID</th><th>ISBN</th><th>Jméno autora</th><th>Příjmení autora</th><th>Název knihy</th><th>Popis knihy</th></tr></thead><tbody> 
+            <thead class='table-dark'><tr><th>ID</th><th>ISBN</th><th>Jméno</th><th>Příjmení</th><th>Název knihy</th><th>Popis knihy</th></tr></thead><tbody> 
             <?php
     while ($row = $result->fetch_assoc()) {
         echo "<tr>";

@@ -30,11 +30,12 @@
 	</nav>
 	<div class="container">
 		<?php
-        $page = isset($_GET['page']) ? $_GET['page'] : 'add';
+        $page = isset($_GET['page']) ? $_GET['page'] : 'list';
 		switch ($page) {
 		    // přidání knihy
 		    case 'add':
 		        echo '<h1 class="mb-4">Vkládání nové knihy</h1>';
+		        include 'add.php';
 		        echo '
                 <form method="post" action="index.php?page=add" class="mb-4">
                     <div class="mb-3">
@@ -60,17 +61,18 @@
                     <button type="submit" class="btn btn-primary">Přidat knihu</button>
                 </form>
                 ';
+
 		        break;
 		        // Přehled knih
 		    case 'list':
 		        echo '<h1 class="mb-4">Přehled knih</h1>';
-		        include 'prehled.php';
+		        include 'list.php';
 		        break;
 		        //vyhledávání
 		    case 'search':
 		        echo '<h1 class="mb-4">Vyhledávání knih</h1>';
 		        echo '
-                <form method="get" action="index.php" class="mb-4">
+                <form method="post" action="index.php?page=search" class="mb-4">
                     <input type="hidden" name="page" value="search">
                     <div class="mb-3">
                         <label for="author_last" class="form-label">Příjmení autora</label>
@@ -91,7 +93,7 @@
                     <button type="submit" class="btn btn-primary">Vyhledat</button>
                 </form>
                 ';
-		        echo '<!-- Zde bude vyhledávací formulář -->';
+		        include 'search.php';
 		        break;
 		    default:
 		        echo '<p>Vítejte v evidenci knih. Použijte menu pro přechod mezi stránkami.</p>';
