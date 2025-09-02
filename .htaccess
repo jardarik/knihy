@@ -1,0 +1,5 @@
+# Zakázat přístup k databázovým konfiguračním souborům
+<Files "dbConnParam.php">
+    Order Allow,Deny
+    Deny from all
+</Files>
