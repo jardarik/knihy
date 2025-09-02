@@ -6,8 +6,8 @@
 	<title>Evidence knih</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-	<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+<body class="bg-light">
+	<nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm mb-4">
 		<div class="container">
 			<a class="navbar-brand" href="index.php">Knihovna</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,31 +28,31 @@
 			</div>
 		</div>
 	</nav>
-	<div class="container">
+	<div class="container bg-white rounded shadow p-4">
 		<?php
         $page = isset($_GET['page']) ? $_GET['page'] : 'list';
 		switch ($page) {
 		    // přidání knihy
 		    case 'add':
 		        echo '<h1 class="mb-4">Vkládání nové knihy</h1>';
-		        include 'add.php';
 		        echo '
 				<form method="post" action="index.php?page=add" class="mb-4">
 					<div class="mb-3">
-						<label for="isbn" class="form-label">ISBN</label>
-						<input type="text" class="form-control" id="isbn" name="isbn" required>
+                        <label for="isbn" class="form-label">ISBN <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="isbn" name="isbn" >
+                        <small class="form-text text-muted">Povolený formát: ISBN-10 (např. 80-7203-720-2) nebo ISBN-13 (např. 978-80-7203-720-1)</small>
 					</div>
 					<div class="mb-3">
-						<label for="first_name" class="form-label">Křestní jméno autora</label>
-						<input type="text" class="form-control" id="first_name" name="first_name" required>
+						<label for="first_name" class="form-label">Křestní jméno autora <span class="text-danger">*</span></label>
+						<input type="text" class="form-control" id="first_name" name="first_name">
 					</div>
 					<div class="mb-3">
-						<label for="second_name" class="form-label">Příjmení autora</label>
-						<input type="text" class="form-control" id="second_name" name="second_name" required>
+						<label for="second_name" class="form-label">Příjmení autora <span class="text-danger">*</span></label>
+						<input type="text" class="form-control" id="second_name" name="second_name" >
 					</div>
 					<div class="mb-3">
-						<label for="book_name" class="form-label">Název knihy</label>
-						<input type="text" class="form-control" id="book_name" name="book_name" required>
+						<label for="book_name" class="form-label">Název knihy <span class="text-danger">*</span></label>
+						<input type="text" class="form-control" id="book_name" name="book_name" >
 					</div>
 					<div class="mb-3">
 						<label for="book_desc" class="form-label">Popis</label>
@@ -61,6 +61,7 @@
 					<button type="submit" class="btn btn-primary">Přidat knihu</button>
 				</form>
                 ';
+		        include 'add.php';
 
 		        break;
 		        // Přehled knih
@@ -101,5 +102,24 @@
 		?>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    //script skryje alert po kliknutí do formuláře
+    document.addEventListener('DOMContentLoaded', function() {
+        // Najít div s formulářem (podle třídy nebo id)
+        const formDiv = document.querySelector('form');
+        // Najít všechny alert zprávy
+        const alerts = document.querySelectorAll('.alert');
+        
+        if (formDiv) {
+            formDiv.addEventListener('click', function() {
+                // Skrýt všechny alert zprávy
+                alerts.forEach(function(alert) {
+                    alert.remove();
+                });
+            });
+        }
+    });
+</script>
 </body>
 </html>

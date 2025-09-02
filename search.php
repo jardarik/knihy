@@ -95,7 +95,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->close();
         $conn->close();
     } else {
-        // Informujte uživatele, že je potřeba vyplnit alespoň jedno pole
-        echo "<p style='color:red;'>Vyplňte prosím alespoň jedno pole pro vyhledávání.</p>";
+        echo "<div class='alert alert-warning'>Vyplňte prosím alespoň jedno pole pro vyhledávání.</div>";
     }
 }
