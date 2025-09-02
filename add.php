@@ -3,10 +3,10 @@
 // Zpracování dat z formuláře
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $isbn = trim($_POST['isbn'] ?? '');
-    $first_name = trim($_POST['author_first'] ?? '');
-    $second_name = trim($_POST['author_last'] ?? '');
-    $book_name = trim($_POST['title'] ?? '');
-    $book_desc = trim($_POST['description'] ?? '');
+    $first_name = trim($_POST['first_name'] ?? '');
+    $second_name = trim($_POST['second_name'] ?? '');
+    $book_name = trim($_POST['book_name'] ?? '');
+    $book_desc = trim($_POST['book_desc'] ?? '');
 
     // Načtení parametrů z dbConnParam.php
     $db_param = require __DIR__ . '/dbConnParam.php';

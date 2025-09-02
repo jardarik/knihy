@@ -9,7 +9,7 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
 		<div class="container">
-			<a class="navbar-brand" href="index.php">Evidence knih</a>
+			<a class="navbar-brand" href="index.php">Knihovna</a>
 			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
@@ -37,29 +37,29 @@
 		        echo '<h1 class="mb-4">Vkládání nové knihy</h1>';
 		        include 'add.php';
 		        echo '
-                <form method="post" action="index.php?page=add" class="mb-4">
-                    <div class="mb-3">
-                        <label for="isbn" class="form-label">ISBN</label>
-                        <input type="text" class="form-control" id="isbn" name="isbn" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="author_first" class="form-label">Křestní jméno autora</label>
-                        <input type="text" class="form-control" id="author_first" name="author_first" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="author_last" class="form-label">Příjmení autora</label>
-                        <input type="text" class="form-control" id="author_last" name="author_last" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="title" class="form-label">Název knihy</label>
-                        <input type="text" class="form-control" id="title" name="title" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="description" class="form-label">Popis</label>
-                        <textarea class="form-control" id="description" name="description" rows="4"></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Přidat knihu</button>
-                </form>
+				<form method="post" action="index.php?page=add" class="mb-4">
+					<div class="mb-3">
+						<label for="isbn" class="form-label">ISBN</label>
+						<input type="text" class="form-control" id="isbn" name="isbn" required>
+					</div>
+					<div class="mb-3">
+						<label for="first_name" class="form-label">Křestní jméno autora</label>
+						<input type="text" class="form-control" id="first_name" name="first_name" required>
+					</div>
+					<div class="mb-3">
+						<label for="second_name" class="form-label">Příjmení autora</label>
+						<input type="text" class="form-control" id="second_name" name="second_name" required>
+					</div>
+					<div class="mb-3">
+						<label for="book_name" class="form-label">Název knihy</label>
+						<input type="text" class="form-control" id="book_name" name="book_name" required>
+					</div>
+					<div class="mb-3">
+						<label for="book_desc" class="form-label">Popis</label>
+						<textarea class="form-control" id="book_desc" name="book_desc" rows="4"></textarea>
+					</div>
+					<button type="submit" class="btn btn-primary">Přidat knihu</button>
+				</form>
                 ';
 
 		        break;
@@ -73,18 +73,17 @@
 		        echo '<h1 class="mb-4">Vyhledávání knih</h1>';
 		        echo '
                 <form method="post" action="index.php?page=search" class="mb-4">
-                    <input type="hidden" name="page" value="search">
                     <div class="mb-3">
-                        <label for="author_last" class="form-label">Příjmení autora</label>
-                        <input type="text" class="form-control" id="author_last" name="author_last">
+                        <label for="second_name" class="form-label">Příjmení autora</label>
+                        <input type="text" class="form-control" id="second_name" name="second_name">
                     </div>
                     <div class="mb-3">
-                        <label for="author_first" class="form-label">Křestní jméno</label>
-                        <input type="text" class="form-control" id="author_first" name="author_first">
+                        <label for="first_name" class="form-label">Křestní jméno autora</label>
+                        <input type="text" class="form-control" id="first_name" name="first_name">
                     </div>
                     <div class="mb-3">
-                        <label for="title" class="form-label">Název knihy</label>
-                        <input type="text" class="form-control" id="title" name="title">
+                        <label for="book_name" class="form-label">Název knihy</label>
+                        <input type="text" class="form-control" id="book_name" name="book_name">
                     </div>
                     <div class="mb-3">
                         <label for="isbn" class="form-label">ISBN</label>

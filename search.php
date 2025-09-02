@@ -3,13 +3,14 @@
 // Zpracování dat z formuláře
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $isbn = trim($_POST['isbn'] ?? '');
-    $first_name = trim($_POST['author_first'] ?? '');
-    $second_name = trim($_POST['author_last'] ?? '');
-    $book_name = trim($_POST['title'] ?? '');
-    $book_desc = trim($_POST['description'] ?? '');
+    $first_name = trim($_POST['first_name'] ?? '');
+    $second_name = trim($_POST['second_name'] ?? '');
+    $book_name = trim($_POST['book_name'] ?? '');
+    $book_desc = trim($_POST['book_desc'] ?? '');
 
     //kontrola zadaných vstupů do formuláře, alespoň jedna hodnota povinná
     if ($isbn || $first_name || $second_name || $book_name || $book_desc) {
+        // if (true) {
 
         // Načtení parametrů z dbConnParam.php
         $db_param = require __DIR__ . '/dbConnParam.php';
@@ -58,7 +59,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $types .= 's';
         }
 
-        $sql = "SELECT * FROM knihy WHERE " . implode(" AND ", $conditions);
+        $sql = "SELECT * FROM knihy";
+        if ($conditions) {
+            $sql .= " WHERE " . implode(" AND ", $conditions);
+        }
 
         $stmt = $conn->prepare($sql);
         if ($params) {
@@ -70,19 +74,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Výpis výsledků
         if ($result->num_rows > 0) {
             echo "<table class='table table-striped table-bordered'><thead class='table-dark'><tr>
-                <th>ID</th>
                 <th>ISBN</th>
                 <th>Autor</th>
-                <th>Název</th>
-                <th>Popis</th>
+                <th>Název knihy</th>
+                <th>Popis knihy</th>
             </tr></thead><tbody>";
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>
-                <td>" . htmlspecialchars($row['id']) . "</td>
                 <td>" . htmlspecialchars($row['isbn']) . "</td>
-                <td>" . htmlspecialchars($row['author_first']) . " " . htmlspecialchars($row['author_last']) . "</td>
-                <td>" . htmlspecialchars($row['title']) . "</td>
-                <td>" . htmlspecialchars($row['description']) . "</td>
+                <td>" . htmlspecialchars($row['first_name']) . " " . htmlspecialchars($row['second_name']) . "</td>
+                <td>" . htmlspecialchars($row['book_name']) . "</td>
+                <td>" . htmlspecialchars($row['book_desc']) . "</td>
             </tr>";
             }
             echo "</tbody></table>";
